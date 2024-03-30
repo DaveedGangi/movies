@@ -1,0 +1,37 @@
+.castingTeam {
+  height: 200px;
+}
+.castFlexing {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.eachCastMember {
+  height: 300px;
+  width: 200px;
+  margin: 12px;
+}
+.flexing-movie-image-and-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.moviePoster {
+  margin-right: 12px;
+  height: 400px;
+}
+.movie-name {
+  font-size: 25px;
+}
+
+@media screen and (max-width: 767px) {
+  .movie-name {
+    font-size: 15px;
+  }
+  .moviePoster {
+    height: 200px;
+    width: 100px;
+  }
+}

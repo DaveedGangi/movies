@@ -1,0 +1,25 @@
+.popular {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.EachImage {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.movieImage {
+  height: 300px;
+}
+.Title {
+  font-size: 15px;
+}
+.Page-head {
+  color: rgb(40, 56, 43);
+  font-size: 32px;
+}
+.button-viewDetails {
+  border: 1px solid goldenrod;
+  color: blue;
+  border-radius: 4px;
+}

@@ -1,0 +1,28 @@
+.popular {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-left: 32px;
+}
+.EachImage {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  height: 440px;
+  width: 300px;
+}
+.upComingMovie-image {
+  height: 300px;
+}
+.upComingMovie-title {
+  font-size: 15px;
+}
+.Page-head {
+  margin-left: 33px;
+  color: rgb(40, 56, 43);
+  font-size: 32px;
+}
+.button-viewDetails {
+  border: 1px solid goldenrod;
+  color: blue;
+}

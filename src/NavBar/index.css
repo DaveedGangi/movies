@@ -1,0 +1,78 @@
+.navBarBg {
+  background-color: limegreen;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  background-size: cover;
+}
+.links {
+  text-decoration: none;
+}
+.inputDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.movie-DB {
+  font-size: 25px;
+}
+.PopularHeading {
+  font-size: 25px;
+}
+.TopRatedHeading {
+  font-size: 25px;
+}
+.UpcomingHeading {
+  font-size: 25px;
+}
+.Input {
+  width: 170px;
+}
+.search {
+  width: 88px;
+}
+
+@media screen and (max-width: 767px) {
+  .PopularHeading {
+    font-size: 12px;
+  }
+  .UpcomingHeading {
+    font-size: 12px;
+  }
+  .movie-DB {
+    font-size: 12px;
+  }
+  .TopRatedHeading {
+    font-size: 12px;
+  }
+  .search {
+    width: 86px;
+    margin-bottom: 15px;
+  }
+  .Input {
+    width: 164px;
+    margin-bottom: 12px;
+  }
+}
+
+.Links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 650px;
+}
+
+@media screen and (max-width: 767px) {
+  .Links {
+    width: 250px;
+  }
+  .navBarBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
