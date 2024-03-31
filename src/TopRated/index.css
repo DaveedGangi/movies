@@ -25,4 +25,5 @@
 .button-viewDetails {
   border: 1px solid goldenrod;
   color: blue;
+  cursor: pointer;
 }

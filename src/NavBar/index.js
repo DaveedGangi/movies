@@ -1,4 +1,4 @@
-import {Link, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 import searchContext from '../context/searchContext'
 
@@ -11,8 +11,18 @@ const NavBar = props => (
 
       const changeValue = event => {
         const {history} = props
-        history.push(event.target.value)
         changeTextValue(event.target.value)
+        history.push('/')
+      }
+
+      console.log('inNavBarSearched')
+      console.log(search)
+
+      const goToSearched = () => {
+        const {history} = props
+        console.log('HEllo Jesus')
+
+        history.push('SearchedMovie')
       }
 
       return (
@@ -44,11 +54,10 @@ const NavBar = props => (
               placeholder="Search"
               className="Input"
             />
-            <Link to="SearchedMovie" data={search}>
-              <button className="search" type="button">
-                Search
-              </button>
-            </Link>
+
+            <button onClick={goToSearched} className="search" type="button">
+              Search
+            </button>
           </div>
         </div>
       )

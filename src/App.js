@@ -27,12 +27,20 @@ class App extends Component {
     this.setState({search: text})
   }
 
+  changeTextValue2 = () => {
+    this.setState({search: ''})
+  }
+
   render() {
     const {search} = this.state
     console.log(search)
     return (
       <searchContext.Provider
-        value={{search, changeTextValue: this.changingText}}
+        value={{
+          search,
+          changeTextValue: this.changingText,
+          changeTextValue2: this.changeTextValue2,
+        }}
       >
         <div>
           <NavBar />

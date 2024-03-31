@@ -57,11 +57,6 @@ class Popular extends Component {
   render() {
     const {listOfAllPopularMovies, pageNumber, duplicateMoviesList} = this.state
 
-    console.log(listOfAllPopularMovies)
-    console.log(duplicateMoviesList)
-    console.log('popular')
-    console.log(pageNumber)
-
     return (
       <div>
         <div className="Pagination">

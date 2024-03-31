@@ -5,7 +5,12 @@ import Pagination from '../Pagination'
 import './index.css'
 
 class SingleVideo extends Component {
-  state = {movieDetails: [], cast: [], duplicateMoviesList: [], pageNumber: 1}
+  state = {
+    movieDetails: [],
+    cast: [],
+    duplicateMoviesList: [],
+    pageNumber: 1,
+  }
 
   componentDidMount() {
     this.fetchSingleApi()
@@ -69,18 +74,31 @@ class SingleVideo extends Component {
     console.log(`ResponseCast : ${response.ok}`)
 
     const reponsedToJson = await response.json()
+
     console.log(reponsedToJson)
+
     if (response.ok === true) {
       const castAdding = reponsedToJson.cast.map(each => ({
-        id: each.id,
+        id: each.credit_id,
         profilePath: `https://image.tmdb.org/t/p/w500/${each.profile_path}`,
         originalName: each.original_name,
         name: each.name,
         charactorName: each.character,
       }))
+
+      const crewAdding = reponsedToJson.crew.map(each => ({
+        id: each.credit_id,
+        profilePath: `https://image.tmdb.org/t/p/w500/${each.profile_path}`,
+        originalName: each.original_name,
+        name: each.name,
+        charactorName: each.character,
+      }))
+
+      const details = [...castAdding, ...crewAdding]
+      console.log(details)
       this.setState({
-        cast: castAdding,
-        duplicateMoviesList: castAdding.slice(0, 10),
+        cast: details,
+        duplicateMoviesList: details.slice(0, 10),
       })
     }
   }
@@ -143,7 +161,7 @@ class SingleVideo extends Component {
                 <img
                   className="castingTeam"
                   src={each.profilePath}
-                  alt={each.profilePath}
+                  alt={each.originalName}
                 />
                 <p>{each.originalName}</p>
                 <p>{each.charactorName}</p>
