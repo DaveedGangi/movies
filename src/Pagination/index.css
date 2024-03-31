@@ -1,0 +1,22 @@
+.Button-style {
+  background-color: blue;
+  color: aliceblue;
+  width: 55px;
+  cursor: pointer;
+  border: 0px;
+  height: 35px;
+  border-radius: 50px;
+  margin-inline: 7px;
+  outline: none;
+}
+.No-button-style {
+  background-color: aliceblue;
+  color: black;
+  width: 55px;
+  cursor: pointer;
+  border: 1px solid blue;
+  height: 35px;
+  border-radius: 50px;
+  margin-inline: 7px;
+  outline: none;
+}

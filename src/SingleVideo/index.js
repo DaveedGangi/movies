@@ -2,10 +2,12 @@ import {Component} from 'react'
 
 import NavBar from '../NavBar'
 
+import Pagination from '../Pagination'
+
 import './index.css'
 
 class SingleVideo extends Component {
-  state = {movieDetails: [], cast: []}
+  state = {movieDetails: [], cast: [], duplicateMoviesList: [], pageNumber: 1}
 
   componentDidMount() {
     this.fetchSingleApi()
@@ -78,12 +80,28 @@ class SingleVideo extends Component {
         name: each.name,
         charactorName: each.character,
       }))
-      this.setState({cast: castAdding})
+      this.setState({
+        cast: castAdding,
+        duplicateMoviesList: castAdding.slice(0, 10),
+      })
     }
   }
 
+  changePages = number => {
+    console.log(number)
+    const {cast} = this.state
+    this.setState({
+      duplicateMoviesList: cast.slice(number * 10 - 10, number * 10),
+    })
+  }
+
+  pageNumberChange = numberData => {
+    console.log(numberData)
+    this.setState({pageNumber: numberData})
+  }
+
   render() {
-    const {movieDetails, cast} = this.state
+    const {movieDetails, cast, pageNumber, duplicateMoviesList} = this.state
     console.log(movieDetails.genres)
 
     return (
@@ -111,10 +129,19 @@ class SingleVideo extends Component {
           </div>
         </div>
 
+        <div className="Pagination">
+          <Pagination
+            data={cast}
+            changePages={this.changePages}
+            pageStyling={pageNumber}
+            changePageStyling={this.pageNumberChange}
+          />
+        </div>
+
         <div>
           <h1>casting</h1>
           <div className="castFlexing">
-            {cast.map(each => (
+            {duplicateMoviesList.map(each => (
               <div className="eachCastMember" key={each.id}>
                 <img
                   className="castingTeam"

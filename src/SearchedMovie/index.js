@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom'
 
 import NavBar from '../NavBar'
 
+import Pagination from '../Pagination'
+
 import './index.css'
 
 class SearchedMovie extends Component {
-  state = {listOfAllPopularMovies: []}
+  state = {listOfAllPopularMovies: [], duplicateMoviesList: [], pageNumber: 1}
 
   componentDidMount() {
     this.fetchApi()
@@ -38,17 +40,46 @@ class SearchedMovie extends Component {
         id: each.id,
       }))
 
-      this.setState({listOfAllPopularMovies: listOfPopularMovies})
+      this.setState({
+        listOfAllPopularMovies: listOfPopularMovies,
+        duplicateMoviesList: listOfPopularMovies.slice(0, 10),
+      })
     }
   }
 
-  render() {
+  changePages = number => {
+    console.log(number)
     const {listOfAllPopularMovies} = this.state
+    this.setState({
+      duplicateMoviesList: listOfAllPopularMovies.slice(
+        number * 10 - 10,
+        number * 10,
+      ),
+    })
+  }
+
+  pageNumberChange = numberData => {
+    console.log(numberData)
+    this.setState({pageNumber: numberData})
+  }
+
+  render() {
+    const {listOfAllPopularMovies, pageNumber, duplicateMoviesList} = this.state
     return (
       <div>
         <NavBar />
+
+        <div className="Pagination">
+          <Pagination
+            data={listOfAllPopularMovies}
+            changePages={this.changePages}
+            pageStyling={pageNumber}
+            changePageStyling={this.pageNumberChange}
+          />
+        </div>
+
         <div className="popular">
-          {listOfAllPopularMovies.map(each => (
+          {duplicateMoviesList.map(each => (
             <div key={each.id} className="EachImage">
               <img
                 className="SearchedMovie"

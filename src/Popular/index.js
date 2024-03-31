@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom'
 
 import NavBar from '../NavBar'
 
+import Pagination from '../Pagination'
+
 import './index.css'
 
 class Popular extends Component {
-  state = {listOfAllPopularMovies: [], movieId: 0}
+  state = {listOfAllPopularMovies: [], duplicateMoviesList: [], pageNumber: 1}
 
   componentDidMount() {
     this.fetchApi()
@@ -31,25 +33,52 @@ class Popular extends Component {
         backDropPath: each.backdrop_path,
       }))
 
-      this.setState({listOfAllPopularMovies: listOfPopularMovies})
+      this.setState({
+        listOfAllPopularMovies: listOfPopularMovies,
+        duplicateMoviesList: listOfPopularMovies.slice(0, 10),
+      })
     }
   }
 
-  changeId = event => {
-    this.setState({movieId: event.target.id})
+  changePages = number => {
+    console.log(number)
+    const {listOfAllPopularMovies} = this.state
+    this.setState({
+      duplicateMoviesList: listOfAllPopularMovies.slice(
+        number * 10 - 10,
+        number * 10,
+      ),
+    })
+  }
+
+  pageNumberChange = numberData => {
+    console.log(numberData)
+    this.setState({pageNumber: numberData})
   }
 
   render() {
-    const {listOfAllPopularMovies, movieId} = this.state
-    console.log(movieId)
+    const {listOfAllPopularMovies, pageNumber, duplicateMoviesList} = this.state
+
+    console.log(listOfAllPopularMovies)
+    console.log(duplicateMoviesList)
+    console.log('popular')
+    console.log(pageNumber)
+
     return (
       <div>
         <NavBar />
 
-        <h1 className="Page-head">Popular</h1>
+        <div className="Pagination">
+          <Pagination
+            data={listOfAllPopularMovies}
+            changePages={this.changePages}
+            pageStyling={pageNumber}
+            changePageStyling={this.pageNumberChange}
+          />
+        </div>
 
         <div className="popular">
-          {listOfAllPopularMovies.map(each => (
+          {duplicateMoviesList.map(each => (
             <div key={each.id} className="EachImage">
               <img className="movieImage" src={each.image} alt={each.name} />
 
