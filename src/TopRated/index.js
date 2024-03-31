@@ -2,8 +2,6 @@ import {Component} from 'react'
 
 import {Link} from 'react-router-dom'
 
-import NavBar from '../NavBar'
-
 import Pagination from '../Pagination'
 
 import './index.css'
@@ -61,8 +59,6 @@ class TopRated extends Component {
 
     return (
       <div>
-        <NavBar />
-
         <div className="Pagination">
           <Pagination
             data={listOfAllPopularMovies}

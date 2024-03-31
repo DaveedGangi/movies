@@ -2,8 +2,6 @@ import {Component} from 'react'
 
 import {Link} from 'react-router-dom'
 
-import NavBar from '../NavBar'
-
 import Pagination from '../Pagination'
 
 import './index.css'
@@ -17,6 +15,7 @@ class SearchedMovie extends Component {
 
   fetchApi = async () => {
     const API_KEY = '1654b633a11a9de25ce1365e7f8f57ae'
+    console.log('SearchBelow')
     console.log(this.props)
     const {match} = this.props
     const {params} = match
@@ -67,8 +66,6 @@ class SearchedMovie extends Component {
     const {listOfAllPopularMovies, pageNumber, duplicateMoviesList} = this.state
     return (
       <div>
-        <NavBar />
-
         <div className="Pagination">
           <Pagination
             data={listOfAllPopularMovies}

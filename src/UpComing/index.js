@@ -2,8 +2,6 @@ import {Component} from 'react'
 
 import {Link} from 'react-router-dom'
 
-import NavBar from '../NavBar'
-
 import Pagination from '../Pagination'
 
 import './index.css'
@@ -60,8 +58,6 @@ class UpComing extends Component {
     const {listOfAllPopularMovies, pageNumber, duplicateMoviesList} = this.state
     return (
       <div>
-        <NavBar />
-
         <div className="Pagination">
           <Pagination
             data={listOfAllPopularMovies}
