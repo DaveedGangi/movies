@@ -10,9 +10,7 @@ const NavBar = props => (
       const {search, changeTextValue} = value
 
       const changeValue = event => {
-        const {history} = props
         changeTextValue(event.target.value)
-        history.push('/')
       }
 
       console.log('inNavBarSearched')
