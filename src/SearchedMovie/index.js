@@ -34,7 +34,7 @@ class SearchedMovie extends Component {
   showSearchPage = search => {
     this.fetchApi = async () => {
       const API_KEY = '1654b633a11a9de25ce1365e7f8f57ae'
-      console.log(search)
+      console.log(`searched Movie Data: ${search}`)
 
       const MOVIE_NAME = search
       const response = await fetch(
@@ -62,6 +62,7 @@ class SearchedMovie extends Component {
 
   render() {
     const {listOfAllPopularMovies, pageNumber, duplicateMoviesList} = this.state
+    console.log(duplicateMoviesList)
 
     return (
       <searchContext.Consumer>

@@ -14,8 +14,28 @@ const Pagination = props => {
     changePageStyling(event.target.value)
   }
 
+  const changeNext = () => {
+    if (pages.length > pageStyling) {
+      changePages(pageStyling + 1)
+      changePageStyling(pageStyling + 1)
+    }
+  }
+  const changePrevious = () => {
+    if (pageStyling > 1) {
+      changePages(pageStyling - 1)
+      changePageStyling(pageStyling - 1)
+    }
+  }
+
   return (
     <div className="pages-style">
+      <button
+        className="Previous-button"
+        onClick={changePrevious}
+        type="button"
+      >
+        Prev
+      </button>
       {pages.map(each => (
         <button
           value={each}
@@ -27,6 +47,9 @@ const Pagination = props => {
           {each}
         </button>
       ))}
+      <button className="Next-button" onClick={changeNext} type="button">
+        Next
+      </button>
     </div>
   )
 }

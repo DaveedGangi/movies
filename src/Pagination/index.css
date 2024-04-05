@@ -24,3 +24,23 @@
   margin-top: 7px;
   margin-bottom: 7px;
 }
+.Previous-button {
+  width: 88px;
+  height: 35px;
+  border-radius: 21px;
+  border: 0px;
+  background-color: bisque;
+  color: green;
+  font-weight: 600;
+  cursor: pointer;
+}
+.Next-button {
+  width: 88px;
+  height: 35px;
+  border-radius: 21px;
+  border: 0px;
+  background-color: bisque;
+  color: green;
+  font-weight: 600;
+  cursor: pointer;
+}
