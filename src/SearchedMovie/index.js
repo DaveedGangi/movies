@@ -31,33 +31,35 @@ class SearchedMovie extends Component {
     this.setState({pageNumber: numberData})
   }
 
-  showSearchPage = search => {
-    this.fetchApi = async () => {
-      const API_KEY = '1654b633a11a9de25ce1365e7f8f57ae'
-      console.log(`searched Movie Data: ${search}`)
+  fetchApi = async search => {
+    const API_KEY = '1654b633a11a9de25ce1365e7f8f57ae'
+    console.log(`searched Movie Data: ${search}`)
 
-      const MOVIE_NAME = search
-      const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${MOVIE_NAME}&page=1`,
-      )
+    const MOVIE_NAME = search
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${MOVIE_NAME}&page=1`,
+    )
 
-      const responseToJson = await response.json()
+    const responseToJson = await response.json()
 
-      if (response.ok === true) {
-        const listOfPopularMovies = responseToJson.results.map(each => ({
-          name: each.title,
-          imageUrl: `https://image.tmdb.org/t/p/w500/${each.poster_path}`,
-          vote: each.vote_average,
-          backDropPath: each.backdrop_path,
-          id: each.id,
-        }))
+    if (response.ok === true) {
+      const listOfPopularMovies = responseToJson.results.map(each => ({
+        name: each.title,
+        imageUrl: `https://image.tmdb.org/t/p/w500/${each.poster_path}`,
+        vote: each.vote_average,
+        backDropPath: each.backdrop_path,
+        id: each.id,
+      }))
 
-        this.setState({
-          listOfAllPopularMovies: listOfPopularMovies,
-          duplicateMoviesList: listOfPopularMovies.slice(0, 10),
-        })
-      }
+      this.setState({
+        listOfAllPopularMovies: listOfPopularMovies,
+        duplicateMoviesList: listOfPopularMovies.slice(0, 10),
+      })
     }
+  }
+
+  showSearchPage = search => {
+    this.fetchApi(search)
   }
 
   render() {
