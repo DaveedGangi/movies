@@ -13,13 +13,9 @@ const NavBar = props => (
         changeTextValue(event.target.value)
       }
 
-      console.log('inNavBarSearched')
-      console.log(search)
-
       const goToSearched = () => {
         const {history} = props
-        console.log('HEllo Jesus')
-
+        console.log('You just clicked a search Button')
         history.push('SearchedMovie')
       }
 

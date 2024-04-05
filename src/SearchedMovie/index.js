@@ -34,7 +34,7 @@ class SearchedMovie extends Component {
   showSearchPage = search => {
     this.fetchApi = async () => {
       const API_KEY = '1654b633a11a9de25ce1365e7f8f57ae'
-      console.log('SearchedValue')
+      console.log(search)
 
       const MOVIE_NAME = search
       const response = await fetch(
