@@ -1,10 +1,10 @@
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 
 import searchContext from '../context/searchContext'
 
 import './index.css'
 
-const NavBar = props => (
+const NavBar = () => (
   <searchContext.Consumer>
     {value => {
       const {search, changeTextValue} = value
@@ -14,9 +14,8 @@ const NavBar = props => (
       }
 
       const goToSearched = () => {
-        const {history} = props
         console.log('You just clicked a search Button')
-        history.push('SearchedMovie')
+        changeTextValue('')
       }
 
       return (
@@ -49,9 +48,11 @@ const NavBar = props => (
               className="Input"
             />
 
-            <button onClick={goToSearched} className="search" type="button">
-              Search
-            </button>
+            <Link to={`SearchedMovie/${search}`}>
+              <button onClick={goToSearched} className="search" type="button">
+                Search
+              </button>
+            </Link>
           </div>
         </div>
       )

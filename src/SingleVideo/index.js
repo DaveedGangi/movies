@@ -2,6 +2,8 @@ import {Component} from 'react'
 
 import Pagination from '../Pagination'
 
+import NavBar from '../NavBar'
+
 import './index.css'
 
 class SingleVideo extends Component {
@@ -122,6 +124,7 @@ class SingleVideo extends Component {
 
     return (
       <div>
+        <NavBar />
         <div>
           <div className="flexing-movie-image-and-details">
             <div>

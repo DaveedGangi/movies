@@ -2,6 +2,8 @@ import {Component} from 'react'
 
 import {Link} from 'react-router-dom'
 
+import NavBar from '../NavBar'
+
 import Pagination from '../Pagination'
 
 import './index.css'
@@ -15,8 +17,9 @@ class TopRated extends Component {
 
   fetchApi = async () => {
     const API_KEY = '1654b633a11a9de25ce1365e7f8f57ae'
+    const {pageNumber} = this.state
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${pageNumber}`,
     )
     console.log(response)
     const responseToJson = await response.json()
@@ -33,7 +36,7 @@ class TopRated extends Component {
 
       this.setState({
         listOfAllPopularMovies: listOfPopularMovies,
-        duplicateMoviesList: listOfPopularMovies.slice(0, 10),
+        duplicateMoviesList: listOfPopularMovies.slice(0, 20),
       })
     }
   }
@@ -51,7 +54,11 @@ class TopRated extends Component {
 
   pageNumberChange = numberData => {
     console.log(numberData)
-    this.setState({pageNumber: numberData})
+    this.setState({pageNumber: numberData}, this.done)
+  }
+
+  done = () => {
+    this.fetchApi()
   }
 
   render() {
@@ -59,6 +66,7 @@ class TopRated extends Component {
 
     return (
       <div>
+        <NavBar />
         <div className="Pagination">
           <Pagination
             data={listOfAllPopularMovies}
