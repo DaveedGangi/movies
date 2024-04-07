@@ -28,7 +28,7 @@ class TopRated extends Component {
     if (response.ok === true) {
       const listOfPopularMovies = responseToJson.results.map(each => ({
         name: each.title,
-        imageUrl: `https://image.tmdb.org/t/p/w500/${each.poster_path}`,
+        imageUrl: `https://image.tmdb.org/t/p/w500${each.poster_path}`,
         rating: each.vote_average,
         backDropPath: each.backdrop_path,
         id: each.id,
@@ -36,7 +36,7 @@ class TopRated extends Component {
 
       this.setState({
         listOfAllPopularMovies: listOfPopularMovies,
-        duplicateMoviesList: listOfPopularMovies.slice(0, 20),
+        duplicateMoviesList: listOfPopularMovies.slice(0, 10),
       })
     }
   }
@@ -54,10 +54,10 @@ class TopRated extends Component {
 
   pageNumberChange = numberData => {
     console.log(numberData)
-    this.setState({pageNumber: numberData}, this.done)
+    this.setState({pageNumber: numberData}, this.fetchApiAgain)
   }
 
-  done = () => {
+  fetchApiAgain = () => {
     this.fetchApi()
   }
 
@@ -81,7 +81,7 @@ class TopRated extends Component {
             <div key={each.id} className="EachImage">
               <img className="topRated" src={each.imageUrl} alt={each.name} />
 
-              <h1 className="title">Title: {each.name}</h1>
+              <h1 className="title"> {each.name}</h1>
               <p>Rating: {each.rating}</p>
               <Link to={`/movie/${each.id}`} key={each.id}>
                 <button

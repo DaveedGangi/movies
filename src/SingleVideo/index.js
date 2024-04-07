@@ -42,7 +42,7 @@ class SingleVideo extends Component {
     if (response.ok === true) {
       const movieDetail = {
         name: responseToJson.title,
-        imageUrl: `https://image.tmdb.org/t/p/w500/${responseToJson.backdrop_path}`,
+        imageUrl: `https://image.tmdb.org/t/p/w500${responseToJson.backdrop_path}`,
         rating: responseToJson.vote_average,
         duration: responseToJson.runtime,
         genres: responseToJson.genres.map(each => ({
@@ -50,7 +50,7 @@ class SingleVideo extends Component {
           id: each.id,
         })),
 
-        poster: `https://image.tmdb.org/t/p/w500/${responseToJson.poster_path}`,
+        poster: `https://image.tmdb.org/t/p/w500${responseToJson.poster_path}`,
         releaseDate: responseToJson.release_date,
         overView: responseToJson.overview,
         id: responseToJson.id,
@@ -82,7 +82,7 @@ class SingleVideo extends Component {
     if (response.ok === true) {
       const castAdding = reponsedToJson.cast.map(each => ({
         id: each.credit_id,
-        profilePath: `https://image.tmdb.org/t/p/w500/${each.profile_path}`,
+        profilePath: `https://image.tmdb.org/t/p/w500${each.profile_path}`,
         originalName: each.original_name,
         name: each.name,
         charactorName: each.character,
@@ -90,7 +90,7 @@ class SingleVideo extends Component {
 
       const crewAdding = reponsedToJson.crew.map(each => ({
         id: each.credit_id,
-        profilePath: `https://image.tmdb.org/t/p/w500/${each.profile_path}`,
+        profilePath: `https://image.tmdb.org/t/p/w500${each.profile_path}`,
         originalName: each.original_name,
         name: each.name,
         charactorName: each.character,
@@ -115,7 +115,11 @@ class SingleVideo extends Component {
 
   pageNumberChange = numberData => {
     console.log(numberData)
-    this.setState({pageNumber: numberData})
+    this.setState({pageNumber: numberData}, this.fetchApiAgain)
+  }
+
+  fetchApiAgain = () => {
+    this.fetchCast()
   }
 
   render() {

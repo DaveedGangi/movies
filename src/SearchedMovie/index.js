@@ -33,7 +33,11 @@ class SearchedMovie extends Component {
 
   pageNumberChange = numberData => {
     console.log(numberData)
-    this.setState({pageNumber: numberData})
+    this.setState({pageNumber: numberData}, this.fetchApiAgain)
+  }
+
+  fetchApiAgain = () => {
+    this.fetchApi()
   }
 
   fetchApi = async () => {
@@ -43,8 +47,6 @@ class SearchedMovie extends Component {
     const {params} = match
     const {search} = params
     console.log(`searched Movie Data: ${search}`)
-
-    this.setState(prevState => ({inputStore: prevState.search}))
 
     const {inputStore, pageNumber} = this.state
 
@@ -56,11 +58,13 @@ class SearchedMovie extends Component {
     )
 
     const responseToJson = await response.json()
+    console.log('BelowResponseSearchedData')
+    console.log(responseToJson)
 
     if (response.ok === true) {
       const listOfPopularMovies = responseToJson.results.map(each => ({
         name: each.title,
-        imageUrl: `https://image.tmdb.org/t/p/w500/${each.poster_path}`,
+        imageUrl: `https://image.tmdb.org/t/p/w500${each.poster_path}`,
         vote: each.vote_average,
         backDropPath: each.backdrop_path,
         id: each.id,
@@ -94,6 +98,7 @@ class SearchedMovie extends Component {
       <searchContext.Consumer>
         {value => {
           const {search} = value
+
           console.log(search)
           return (
             <div>
@@ -160,7 +165,7 @@ class SearchedMovie extends Component {
                           alt={each.name}
                         />
 
-                        <h1 className="title">Title: {each.name}</h1>
+                        <h1 className="title">{each.name}</h1>
 
                         <p>Rating: {each.vote}</p>
 
