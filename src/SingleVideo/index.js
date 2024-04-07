@@ -115,11 +115,7 @@ class SingleVideo extends Component {
 
   pageNumberChange = numberData => {
     console.log(numberData)
-    this.setState({pageNumber: numberData}, this.fetchApiAgain)
-  }
-
-  fetchApiAgain = () => {
-    this.fetchCast()
+    this.setState({pageNumber: numberData})
   }
 
   render() {

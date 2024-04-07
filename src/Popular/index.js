@@ -40,7 +40,7 @@ class Popular extends Component {
 
       this.setState({
         listOfAllPopularMovies: listOfPopularMovies,
-        duplicateMoviesList: listOfPopularMovies.slice(0, 10),
+        duplicateMoviesList: listOfPopularMovies.slice(0, 20),
       })
     }
   }
