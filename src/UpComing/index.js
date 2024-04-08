@@ -66,14 +66,6 @@ class UpComing extends Component {
     return (
       <div>
         <NavBar />
-        <div className="Pagination">
-          <Pagination
-            data={listOfAllPopularMovies}
-            changePages={this.changePages}
-            pageStyling={pageNumber}
-            changePageStyling={this.pageNumberChange}
-          />
-        </div>
 
         <div className="popular">
           {duplicateMoviesList.map(each => (
@@ -85,7 +77,7 @@ class UpComing extends Component {
               />
 
               <h1 className="upComingMovie-title">{each.name}</h1>
-              <p>Rating: {each.rating}</p>
+              <p className="Rating">Rating: {each.rating}</p>
               <Link to={`/movie/${each.id}`} key={each.id}>
                 <button
                   className="button-viewDetails"
@@ -97,6 +89,15 @@ class UpComing extends Component {
               </Link>
             </div>
           ))}
+        </div>
+
+        <div className="Pagination">
+          <Pagination
+            data={listOfAllPopularMovies}
+            changePages={this.changePages}
+            pageStyling={pageNumber}
+            changePageStyling={this.pageNumberChange}
+          />
         </div>
       </div>
     )

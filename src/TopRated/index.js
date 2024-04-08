@@ -67,14 +67,6 @@ class TopRated extends Component {
     return (
       <div>
         <NavBar />
-        <div className="Pagination">
-          <Pagination
-            data={listOfAllPopularMovies}
-            changePages={this.changePages}
-            pageStyling={pageNumber}
-            changePageStyling={this.pageNumberChange}
-          />
-        </div>
 
         <div className="popular">
           {duplicateMoviesList.map(each => (
@@ -82,7 +74,7 @@ class TopRated extends Component {
               <img className="topRated" src={each.imageUrl} alt={each.name} />
 
               <h1 className="title"> {each.name}</h1>
-              <p>Rating: {each.rating}</p>
+              <p className="Rating">Rating: {each.rating}</p>
               <Link to={`/movie/${each.id}`} key={each.id}>
                 <button
                   className="button-viewDetails"
@@ -94,6 +86,15 @@ class TopRated extends Component {
               </Link>
             </div>
           ))}
+        </div>
+
+        <div className="Pagination">
+          <Pagination
+            data={listOfAllPopularMovies}
+            changePages={this.changePages}
+            pageStyling={pageNumber}
+            changePageStyling={this.pageNumberChange}
+          />
         </div>
       </div>
     )

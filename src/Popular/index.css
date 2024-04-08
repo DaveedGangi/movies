@@ -3,21 +3,30 @@
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
+}
+.items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .EachImage {
   margin-top: 12px;
   margin-bottom: 12px;
+  width: 330px;
 }
 .movieImage {
   height: 300px;
 }
 .Title {
   font-size: 15px;
+  font-family: 'Roboto';
 }
 .Page-head {
   color: rgb(40, 56, 43);
   font-size: 32px;
-  padding-left: 40px;
 }
 
 .button-viewDetails {
@@ -25,10 +34,34 @@
   color: blue;
   border-radius: 4px;
   cursor: pointer;
+  width: 200px;
+  height: 27px;
+  font-weight: 500;
+  font-family: 'Roboto';
 }
 .Pagination {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  padding-right: 93px;
+}
+.Rating {
+  color: rgb(56, 55, 49);
+  font-weight: 550;
+  font-family: 'Roboto';
+}
+
+@media screen and (max-width: 767px) {
+  .EachImage {
+    width: 350px;
+  }
+  .popular {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

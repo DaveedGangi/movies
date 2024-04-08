@@ -9,16 +9,9 @@ const Pagination = props => {
     pages.push(i)
   }
 
-  const changePageBasedOnClicking = event => {
-    changePages(event.target.value)
-    changePageStyling(event.target.value)
-  }
-
   const changeNext = () => {
-    if (pages.length > pageStyling) {
-      changePages(pageStyling + 1)
-      changePageStyling(pageStyling + 1)
-    }
+    changePages(pageStyling + 1)
+    changePageStyling(pageStyling + 1)
   }
   const changePrevious = () => {
     if (pageStyling > 1) {
@@ -36,6 +29,9 @@ const Pagination = props => {
       >
         Prev
       </button>
+
+      {/* TODO: hiding
+      
       {pages.map(each => (
         <button
           value={each}
@@ -47,6 +43,9 @@ const Pagination = props => {
           {each}
         </button>
       ))}
+
+      */}
+      <span className="page-number">{pageStyling}</span>
       <button className="Next-button" onClick={changeNext} type="button">
         Next
       </button>

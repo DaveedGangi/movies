@@ -71,6 +71,32 @@ class Popular extends Component {
     return (
       <div>
         <NavBar />
+
+        <div className="popular">
+          <div className="items">
+            {duplicateMoviesList.map(each => (
+              <div key={each.id} className="EachImage">
+                <div>
+                  <img
+                    className="movieImage"
+                    src={each.image}
+                    alt={each.name}
+                  />
+                </div>
+
+                <h1 className="Title"> {each.name}</h1>
+                <p className="Rating">Rating: {each.rating}</p>
+
+                <Link to={`/movie/${each.id}`} key={each.id}>
+                  <button className="button-viewDetails" type="button">
+                    View Details
+                  </button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="Pagination">
           <Pagination
             data={listOfAllPopularMovies}
@@ -78,23 +104,6 @@ class Popular extends Component {
             pageStyling={pageNumber}
             changePageStyling={this.pageNumberChange}
           />
-        </div>
-
-        <div className="popular">
-          {duplicateMoviesList.map(each => (
-            <div key={each.id} className="EachImage">
-              <img className="movieImage" src={each.image} alt={each.name} />
-
-              <h1 className="Title"> {each.name}</h1>
-              <p>Rating: {each.rating}</p>
-
-              <Link to={`/movie/${each.id}`} key={each.id}>
-                <button className="button-viewDetails" type="button">
-                  View Details
-                </button>
-              </Link>
-            </div>
-          ))}
         </div>
       </div>
     )

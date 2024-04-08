@@ -2,8 +2,6 @@ import {Component} from 'react'
 
 import Pagination from '../Pagination'
 
-import NavBar from '../NavBar'
-
 import './index.css'
 
 class SingleVideo extends Component {
@@ -124,7 +122,26 @@ class SingleVideo extends Component {
 
     return (
       <div>
-        <NavBar />
+        <div className="navBarBg">
+          <div className="Links">
+            <h1 className="movie-DB">movieDB</h1>
+            <div>
+              <a className="links" href="/">
+                <h1 className="PopularHeading">Popular</h1>
+              </a>
+            </div>
+            <div>
+              <a className="links" href="/top-rated">
+                <h1 className="TopRatedHeading">Top Rated</h1>
+              </a>
+            </div>
+            <div>
+              <a className="links" href="/upcoming">
+                <h1 className="UpcomingHeading">Upcoming</h1>
+              </a>
+            </div>
+          </div>
+        </div>
         <div>
           <div className="flexing-movie-image-and-details">
             <div>
@@ -136,13 +153,17 @@ class SingleVideo extends Component {
             </div>
             <div>
               <h1 className="movie-name">Movie Name: {movieDetails.name}</h1>
-              <p>rating: {movieDetails.rating}</p>
+              <p className="rating">Rating: {movieDetails.rating}</p>
 
-              <p>duration: {movieDetails.duration}</p>
+              <p className="duration">Duration: {movieDetails.duration}</p>
 
-              <p>releaseDate: {movieDetails.releaseDate}</p>
+              <p className="releaseDate">
+                Release Date: {movieDetails.releaseDate}
+              </p>
 
-              <p>movieOverview: {movieDetails.overView}</p>
+              <p className="movie-overview">
+                Movie Overview: {movieDetails.overView}
+              </p>
             </div>
           </div>
         </div>
@@ -157,7 +178,7 @@ class SingleVideo extends Component {
         </div>
 
         <div>
-          <h1>casting</h1>
+          <h1 className="casting">Casting Members</h1>
           <div className="castFlexing">
             {duplicateMoviesList.map(each => (
               <div className="eachCastMember" key={each.id}>
@@ -166,8 +187,8 @@ class SingleVideo extends Component {
                   src={each.profilePath}
                   alt={each.originalName}
                 />
-                <p>{each.originalName}</p>
-                <p>{each.charactorName}</p>
+                <p className="original-name">{each.originalName}</p>
+                <p className="charactor-name">{each.charactorName}</p>
               </div>
             ))}
           </div>
